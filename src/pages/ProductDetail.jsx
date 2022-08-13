@@ -12,7 +12,7 @@ const ProductDetail = () => {
     const [productDetail, setProductDetail] = useState({})
     const [suggestedProducts, setSuggestedProducts] = useState([])
     const navigate = useNavigate()
-    const [quantity, setQuantity] = useState('')
+    const [quantity, setQuantity] = useState(1)
 
     const { id } = useParams()
 
@@ -48,29 +48,40 @@ const ProductDetail = () => {
 
 
 
-    // console.log(productDetail)
+    console.log(suggestedProducts)
 
     return (
-        <div>
-            <h1>hola product detail </h1>
-            <h1>{productDetail?.title}</h1>
-            <img className='productDetail__img' src={productDetail?.productImgs?.[0]} alt="" />
-            <p>{productDetail?.description}</p>
-            <p>{productDetail?.price}</p>
-
-
-            <div>
-                <h3>add to cart</h3>
-                <form onSubmit={addToCart}>
-                    <input value={quantity} onChange={e => setQuantity(e.target.value)} className='input' type="number" min={1} />
-                    <button>add</button>
-                </form>
+        <div className='detail__container'>
+            <h1 className='detail__title'> Product detail </h1>
+            <div className='detail__product'>
+                <h2 className='detail__subtitle'>{productDetail?.title}</h2>
+                <img className='detail__img' src={productDetail?.productImgs?.[0]} alt="" />
+                <p className='detail__description'>{productDetail?.description}</p>
+                <div>
+                    <form className='form__container' onSubmit={addToCart}>
+                        <p className='form__price'>${productDetail?.price}</p>
+                        <div className='input__container'>
+                            <input value={quantity} onChange={e => setQuantity(e.target.value)} className='form__input' type="number" min={1} />
+                            <button className='form__button'><i class=" form__icon fa-solid fa-cart-plus"></i></button>
+                        </div>
+                    </form>
+                </div>
             </div>
 
-            <ul>
+            <ul className='suggested__container'>
                 {suggestedProducts.map(product => (
-                    <li key={product.id} onClick={() => navigate(`/product/${product.id}`)} ><h2>{product.title}</h2>
-                        <p>{product.description}</p></li>
+                    <li
+                        // checar el scroll smoth
+                        className='suggested__product' key={product.id} onClick={() => navigate(`/product/${product.id}`)} >
+                        {/* checar si es necessario poner la img en dentro de un figure */}
+                        <img className='suggested__img' src={product.productImgs[0]} alt="" />
+                        <h2>
+                            {product.title}
+                        </h2>
+                        {/* <p>
+                            {product.description}
+                        </p> */}
+                    </li>
                 ))}
             </ul>
         </div>

@@ -45,7 +45,7 @@ const NavBar = () => {
                 <h2 className='nav__title'>e-commerce</h2>
 
                 <div className='nav__links'>
-                    <Link className='nav__link' to='/'><i className="fa-solid fa-store"></i></Link>
+                    <Link className='nav__link' to='/'><i className="nav__icon  fa-solid fa-store"></i></Link>
                     <Link className='nav__link' to='/purchases'><i className="fa-solid fa-list-check"></i></Link>
                     {token ? (
                         <Link className='nav__link' to='' onClick={logOut}>

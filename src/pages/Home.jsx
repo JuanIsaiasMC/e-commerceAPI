@@ -48,7 +48,7 @@ const home = () => {
             <form className='home__form'>
                 <input className='form__input' type="text" onChange={(e) => setSearchValue(e.target.value)}
                     value={searchValue} />
-                <button onClick={() => dispatch(productDetailThunk(searchValue))}>search</button>
+                <button className='home__button' onClick={() => dispatch(productDetailThunk(searchValue))}><i class="fa-solid fa-magnifying-glass"></i></button>
             </form>
 
             <ul className='home__products-container'>
@@ -62,9 +62,9 @@ const home = () => {
                             {/* </div> */}
 
                             <div className='product__container-info'>
-                                {/* <figure className='home__img'> */}
-                                <img className='product__img' src={product.productImgs[0]} alt="prodcutimg" />
-                                {/* </figure> */}
+                                <figure className='home__img'>
+                                    <img className='product__img' src={product.productImgs[0]} alt="prodcutimg" />
+                                </figure>
                                 <div className='home__product-info'>
                                     <div>
                                         <p>${product.price}</p>

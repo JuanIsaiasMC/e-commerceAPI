@@ -43,7 +43,6 @@ const Cart = ({ boton, menu, }) => {
                 {cartProducts.map(product => (
                     <li className='cart__product' key={product.id} onClick={() => navigate(`/product/${product.id}`)}>
                         <div className='cart__product-item'>
-
                             <h2 className='cart__product-title'>{product?.title}</h2>
                             <div className='cart__product-info'>
                                 <p>${product?.price}</p>
@@ -54,11 +53,12 @@ const Cart = ({ boton, menu, }) => {
                     </li>
                 ))}
             </ul>
-            <div>
+            <div className='total__container'>
 
-                <h3 className='cart__product-total'>total cart {getTotalCart(cartProducts)}</h3>
+                <h3 className='cart__product-total'>total cart</h3>
+                <h3> ${getTotalCart(cartProducts)}</h3>
             </div>
-            <button onClick={() => dispatch(buyCartThunk())}>buy all items</button>
+            <button className='cart__button' onClick={() => dispatch(buyCartThunk())}>buy all items</button>
         </aside>
     );
 };
