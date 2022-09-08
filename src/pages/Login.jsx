@@ -51,15 +51,18 @@ const Login = () => {
 
 
     return (
-        <div>
-            <form onSubmit={handleSubmit(submit)}>
-                <input type="email" {...register('email')} />
+        <div className='logging__container'>
+            <div className='logging__text'>
+                <h2>email: <span className='span__text'>juanM@gmail</span></h2>
+                <h2>password: <span className='span__text'>juanm1234</span></h2>
+            </div>
+            <form className='logging__form' onSubmit={handleSubmit(submit)}>
+                <input placeholder='email' className='logging__input' type="email" {...register('email')} />
                 <br />
-                <input type="password" {...register('password')} />
+                <input placeholder='password' className='logging__input' type="password" {...register('password')} />
                 <br />
-                <button type='submit'>submit</button>
+                <button className='logging__button' type='submit'>submit</button>
             </form>
-
         </div>
     );
 };

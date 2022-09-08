@@ -11,7 +11,8 @@ const NavBar = () => {
     const [menu, setMenu] = useState(false)
     const [body, setBody] = useState('')
 
-    // window.reload
+    const navigate = useNavigate()
+
 
     const showCart = () => {
         if (token) {
@@ -23,15 +24,12 @@ const NavBar = () => {
                 document.body.style.overflow = 'scroll'
             }
 
-        } else {
-            navigate('/login')
         }
-
 
 
     }
 
-    const navigate = useNavigate()
+
 
     const logOut = () => {
         localStorage.setItem('token', '')
@@ -46,15 +44,15 @@ const NavBar = () => {
 
                 <div className='nav__links'>
                     <Link className='nav__link' to='/'><i className="nav__icon  fa-solid fa-store"></i></Link>
-                    <Link className='nav__link' to='/purchases'><i className="fa-solid fa-list-check"></i></Link>
+                    <Link className='nav__link' to='/purchases'><i className="nav__icon fa-solid fa-list-check"></i></Link>
                     {token ? (
                         <Link className='nav__link' to='' onClick={logOut}>
-                            <i className="fa-solid fa-user-check"></i>
+                            <i className="nav__icon fa-solid fa-user-check"></i>
                         </Link>
                     ) : (
-                        <Link className='nav__link' to='/login'><i className="fa-solid fa-user-xmark"></i></Link>
+                        <Link className='nav__link' to='/login'><i className="nav__icon fa-solid fa-user-xmark"></i></Link>
                     )}
-                    <Link className='nav__link' to='' onClick={showCart}><i className="fa-solid fa-cart-shopping"></i></Link>
+                    <Link className='nav__link' to='' onClick={showCart}><i className="nav__icon fa-solid fa-cart-shopping"></i></Link>
                 </div>
 
             </nav>

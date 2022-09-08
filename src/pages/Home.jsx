@@ -32,7 +32,10 @@ const home = () => {
 
     // console.log(products)
 
-
+    const viewDetails = (product) => {
+        navigate(`/product/${product.id}`)
+        window.scrollTo({ top: 0, behavior: 'smooth' })
+    }
 
     // console.log(products)
 
@@ -54,7 +57,7 @@ const home = () => {
             <ul className='home__products-container'>
                 {
                     products.map(product => (
-                        <li className='home__products' key={product.id} onClick={() => navigate(`/product/${product.id}`)}>
+                        <li className='home__products' key={product.id} onClick={() => viewDetails(product)}>
                             {/* <div className='home__product-title'> */}
                             <h2>
                                 {product.title}

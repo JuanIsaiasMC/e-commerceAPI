@@ -37,28 +37,34 @@ const Cart = ({ boton, menu, }) => {
     // console.log(cartProducts)
     return (
         <aside className={`cart ${menu}`}>
-            <button className='close__cart' onClick={boton}><i className="fa-solid fa-cart-shopping close__cart-icon"></i></button>
-            <h2>My Cart</h2>
-            <ul className='cart__products'>
-                {cartProducts.map(product => (
-                    <li className='cart__product' key={product.id} onClick={() => navigate(`/product/${product.id}`)}>
-                        <div className='cart__product-item'>
-                            <h2 className='cart__product-title'>{product?.title}</h2>
-                            <div className='cart__product-info'>
-                                <p>${product?.price}</p>
-                                <p>{product.productsInCart?.quantity}</p>
-                                <p>${getTotal(product)}</p>
-                            </div>
-                        </div>
-                    </li>
-                ))}
-            </ul>
-            <div className='total__container'>
+            <div className='close__cart-container'>
 
-                <h3 className='cart__product-total'>total cart</h3>
-                <h3> ${getTotalCart(cartProducts)}</h3>
+                <button className='close__cart' onClick={boton}><i className="fa-solid fa-cart-shopping close__cart-icon"></i></button>
             </div>
-            <button className='cart__button' onClick={() => dispatch(buyCartThunk())}>buy all items</button>
+            <div className='cart__products-container'>
+
+                <h2>My Cart</h2>
+                <ul className='cart__products'>
+                    {cartProducts.map(product => (
+                        <li className='cart__product' key={product.id} onClick={() => navigate(`/product/${product.id}`)}>
+                            <div className='cart__product-item'>
+                                <h2 className='cart__product-title'>{product?.title}</h2>
+                                <div className='cart__product-info'>
+                                    <p>${product?.price}</p>
+                                    <p>{product.productsInCart?.quantity}</p>
+                                    <p>${getTotal(product)}</p>
+                                </div>
+                            </div>
+                        </li>
+                    ))}
+                </ul>
+                <div className='total__container'>
+
+                    <h3 className='cart__product-total'>total cart</h3>
+                    <h3> ${getTotalCart(cartProducts)}</h3>
+                </div>
+                <button className='cart__button' onClick={() => dispatch(buyCartThunk())}>buy all items</button>
+            </div>
         </aside>
     );
 };
