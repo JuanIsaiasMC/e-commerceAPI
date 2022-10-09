@@ -53,8 +53,8 @@ const Login = () => {
     return (
         <div className='logging__container'>
             <div className='logging__text'>
-                <h2>email: <span className='span__text'>juanM@gmail</span></h2>
-                <h2>password: <span className='span__text'>juanm1234</span></h2>
+                <h2>email: <span className='span__text'>juanMeza@gmail.com</span></h2>
+                <h2>password: <span className='span__text'>juan1234</span></h2>
             </div>
             <form className='logging__form' onSubmit={handleSubmit(submit)}>
                 <input placeholder='email' className='logging__input' type="email" {...register('email')} />
