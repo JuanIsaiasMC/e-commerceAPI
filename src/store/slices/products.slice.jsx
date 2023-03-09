@@ -17,23 +17,23 @@ export const prodcutsSlice = createSlice({
 
 export const getProductsThunk = () => (dispatch) => {
     dispatch(setIsLoading(true));
-    return axios.get('https://ecommerce-api-react.herokuapp.com/api/v1/products')
-        .then((res) => dispatch(setProducts(res.data.data.products)))
+    return axios.get('https://e-commerce-api-v2.academlo.tech/api/v1/products')
+        .then((res) => dispatch(setProducts(res.data)))
         .finally(() => dispatch(setIsLoading(false)));
 }
 
 export const productDetailThunk = (searchValue) => (dispatch) => {
     dispatch(setIsLoading(true));
-    return axios.get(`https://ecommerce-api-react.herokuapp.com/api/v1/products?query=${searchValue}`)
-        .then((res) => dispatch(setProducts(res.data.data.products)))
+    return axios.get(`https://e-commerce-api-v2.academlo.tech/api/v1/products?title=${searchValue}`)
+        .then((res) => dispatch(setProducts(res.data)))
         .catch((error) => console.log(error))
         .finally(() => dispatch(setIsLoading(false)));
 }
 
 export const productCategorythunk = (categoryId) => (dispatch) => {
     dispatch(setIsLoading(true));
-    return axios.get(`https://ecommerce-api-react.herokuapp.com/api/v1/products?category=${categoryId}`)
-        .then((res) => dispatch(setProducts(res.data.data.products)))
+    return axios.get(`https://e-commerce-api-v2.academlo.tech/api/v1/products?categoryId=${categoryId}`)
+        .then((res) => dispatch(setProducts(res.data)))
         .finally(() => dispatch(setIsLoading(false)));
 }
 export const { setProducts } = prodcutsSlice.actions;

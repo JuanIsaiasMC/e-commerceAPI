@@ -26,8 +26,8 @@ const home = () => {
     }, [])
 
     useEffect(() => {
-        axios.get('https://ecommerce-api-react.herokuapp.com/api/v1/products/categories')
-            .then(res => setCategories(res.data.data.categories))
+        axios.get('https://e-commerce-api-v2.academlo.tech/api/v1/categories')
+            .then(res => setCategories(res.data))
     }, [])
 
     // console.log(products)
@@ -37,7 +37,7 @@ const home = () => {
         window.scrollTo({ top: 0, behavior: 'smooth' })
     }
 
-    // console.log(products)
+    // console.log(categories)
 
 
     return (
@@ -51,7 +51,7 @@ const home = () => {
             <form className='home__form'>
                 <input className='form__input' type="text" onChange={(e) => setSearchValue(e.target.value)}
                     value={searchValue} />
-                <button className='home__button' onClick={() => dispatch(productDetailThunk(searchValue))}><i class="fa-solid fa-magnifying-glass"></i></button>
+                <button className='home__button' onClick={() => dispatch(productDetailThunk(searchValue))}><i className="fa-solid fa-magnifying-glass"></i></button>
             </form>
 
             <ul className='home__products-container'>
@@ -66,7 +66,7 @@ const home = () => {
 
                             <div className='product__container-info'>
                                 <figure className='home__img'>
-                                    <img className='product__img' src={product.productImgs[0]} alt="prodcutimg" />
+                                    <img className='product__img' src={product.images[0].url} alt="prodcutimg" />
                                 </figure>
                                 <div className='home__product-info'>
                                     <div>

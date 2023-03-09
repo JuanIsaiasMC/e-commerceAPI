@@ -14,7 +14,7 @@ const Purchases = () => {
     }, [])
 
 
-
+    // console.log(purchase);
 
     // const getTotal = product => {
     //     return product.productsInCart?.quantity * Number(product?.price)
@@ -31,6 +31,7 @@ const Purchases = () => {
                 {purchase?.map(item => (
                     <TotalPurchased key={item.id} item={item} />
                 ))}
+                {/* <TotalPurchased purchase={purchase} /> */}
             </ul>
 
         </article>

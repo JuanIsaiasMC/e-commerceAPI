@@ -21,20 +21,20 @@ const Cart = ({ boton, menu, }) => {
 
 
     const getTotal = product => {
-        return product.productsInCart?.quantity * Number(product?.price)
+        return product.quantity * Number(product.product.price)
     }
 
     const getTotalCart = (cartProducts) => {
         let total = 0
         cartProducts.map(product => {
-            total += product.productsInCart?.quantity * Number(product?.price)
+            total += product.quantity * Number(product.product.price)
         })
 
         return total
 
     }
 
-    // console.log(cartProducts)
+    console.log(cartProducts)
     return (
         <aside className={`cart ${menu}`}>
             <div className='close__cart-container'>
@@ -46,12 +46,12 @@ const Cart = ({ boton, menu, }) => {
                 <h2>My Cart</h2>
                 <ul className='cart__products'>
                     {cartProducts.map(product => (
-                        <li className='cart__product' key={product.id} onClick={() => navigate(`/product/${product.id}`)}>
+                        <li className='cart__product' key={product.product.id} onClick={() => navigate(`/product/${product.product.id}`)}>
                             <div className='cart__product-item'>
-                                <h2 className='cart__product-title'>{product?.title}</h2>
+                                <h2 className='cart__product-title'>{product.product.title}</h2>
                                 <div className='cart__product-info'>
-                                    <p>${product?.price}</p>
-                                    <p>{product.productsInCart?.quantity}</p>
+                                    <p>${product.product.price}</p>
+                                    <p>{product.quantity}</p>
                                     <p>${getTotal(product)}</p>
                                 </div>
                             </div>

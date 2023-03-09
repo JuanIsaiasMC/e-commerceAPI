@@ -1,9 +1,10 @@
-import { current } from '@reduxjs/toolkit';
+
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 import { getProductsInCartThunk } from '../store/slices/cart.slice';
 import { getProductsThunk } from '../store/slices/products.slice';
+
 
 
 
@@ -18,8 +19,9 @@ const ProductDetail = () => {
     // images slider
     const [currentImg, setCurrentImg] = useState(0)
 
-    const imgLength = productDetail?.productImgs?.length
-
+    const imgLength = productDetail?.images?.length
+        // console.log(imgLength)
+        ;
     const nextImg = () => {
         setCurrentImg(currentImg === imgLength - 1 ? 0 : currentImg + 1)
     }
@@ -48,8 +50,10 @@ const ProductDetail = () => {
     const addToCart = (e) => {
         e.preventDefault()
         const toCart = {
-            id: productDetail.id,
-            quantity: Number(quantity)
+            quantity: Number(quantity),
+            productId: Number(productDetail.id)
+
+            // "{\"productId\":2,\"quantity\":1}"
         }
         // console.log(toCart)
         dispatch(getProductsInCartThunk(toCart))
@@ -67,7 +71,7 @@ const ProductDetail = () => {
 
 
     // console.log(suggestedProducts) 
-
+    // console.log(productDetail.images)
     return (
         <div className='detail__container'>
             <h1 className='detail__title'> Product detail </h1>
@@ -77,11 +81,11 @@ const ProductDetail = () => {
 
                     <div className='img__container'>
 
-                        {productDetail?.productImgs?.map((imagen, index) => {
+                        {productDetail?.images?.map((imagen, index) => {
                             return (
-                                <div className={currentImg === index ? 'slide active' : 'slide'}>{
+                                <div key={index} className={currentImg === index ? 'slide active' : 'slide'}>{
                                     index === currentImg && (
-                                        <img key={index} className='detail__img' src={imagen} alt="product image" />
+                                        <img key={index} className='detail__img' src={imagen.url} alt="product image" />
                                     )
                                 }
 
@@ -120,7 +124,7 @@ const ProductDetail = () => {
                         <h2>
                             {product.title}
                         </h2>
-                        <img className='suggested__img' src={product.productImgs[0]} alt="" />
+                        <img className='suggested__img' src={product.images?.[0].url} alt="" />
                         <p className='suggested__text'>view detail</p>
                         {/* </div> */}
                         {/* <p>
